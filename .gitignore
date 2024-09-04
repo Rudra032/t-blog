@@ -1,0 +1,44 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+
+# React
+build/
+public/
+coverage/
+.env
+
+# Logs
+*.log
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+out/
+
+# Miscellaneous
+*.swp
+*.swo
+*.swn
+
+# IDE/editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.emacs.desktop
+*.sublime-workspace
+
+# Testing coverage
+coverage/
