@@ -12,7 +12,7 @@ const PostList = () => {
     const fetchPosts = async () => {
       try {
         console.log("Attempting to fetch posts...");
-        const response = await axios.get("http://localhost:5000/posts");
+        const response = await axios.get("https://t-blog-1.onrender.com/posts");
         setPosts(response.data);
         console.log("Fetched posts:", response.data);
       } catch (error) {
@@ -26,7 +26,7 @@ const PostList = () => {
   // Handle delete post
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/posts/${id}`);
+      await axios.delete(`https://t-blog-1.onrender.com/posts/${id}`);
       // Remove the post from the UI after deletion
       setPosts(posts.filter((post) => post._id !== id));
     } catch (error) {

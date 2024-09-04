@@ -15,7 +15,7 @@ const EditPost = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/posts/${postId}`
+          `https://t-blog-1.onrender.com/posts/${postId}`
         );
         setPost({
           title: response.data.title,
@@ -40,7 +40,7 @@ const EditPost = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/posts/${postId}`, post);
+      await axios.patch(`https://t-blog-1.onrender.com/posts/${postId}`, post);
       navigate("/");
     } catch (error) {
       console.error("Error updating the post:", error);

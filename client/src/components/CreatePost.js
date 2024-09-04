@@ -12,7 +12,7 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = { title, content, author };
-    await axios.post("http://localhost:5000/posts", newPost);
+    await axios.post("https://t-blog-1.onrender.com/posts", newPost);
     setTitle("");
     setContent("");
     setAuthor("");
