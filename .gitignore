@@ -7,8 +7,6 @@ package-lock.json
 yarn.lock
 
 # React
-build/
-public/
 coverage/
 .env
 
