@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import Post from "../models/Post.js"; // Ensure the .js extension is included for ES6 imports
+
 const router = express.Router();
-const Post = require("../models/Post");
 
 // Get all posts
 router.get("/", async (req, res) => {
@@ -14,16 +15,14 @@ router.get("/", async (req, res) => {
 
 // Create a new post
 router.post("/", async (req, res) => {
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content,
-    author: req.body.author,
-  });
+  const { title, content, author } = req.body;
+  const post = new Post({ title, content, author });
+
   try {
     const savedPost = await post.save();
     res.json(savedPost);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -33,31 +32,33 @@ router.get("/:postId", async (req, res) => {
     const post = await Post.findById(req.params.postId);
     res.json(post);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 });
 
 // Update a post
 router.patch("/:postId", async (req, res) => {
+  const { title, content } = req.body;
+
   try {
     const updatedPost = await Post.updateOne(
       { _id: req.params.postId },
-      { $set: { title: req.body.title, content: req.body.content } }
+      { $set: { title, content } }
     );
     res.json(updatedPost);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 });
 
 // Delete a post
 router.delete("/:postId", async (req, res) => {
   try {
-    const removedPost = await Post.remove({ _id: req.params.postId });
+    const removedPost = await Post.deleteOne({ _id: req.params.postId });
     res.json(removedPost);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: err.message });
   }
 });
 
-module.exports = router;
+export default router;
